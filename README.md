@@ -1,11 +1,12 @@
 # cs583-3dProject
-Name of Game:  
+Name of Game: Monkey Business  
 
-Group Members: Kennedy Kubiak, Caroline Forsythe, Samantha Konicek  
+Group Members: Kennedy Kubiak, Caroline Forsythe, Samantha Konicek, Isabel Gilley
 
-Target For Game:  
+Target For Game: Play as monkey climbing through the trees in the jungle, collecting banannas while avoiding dangerous birds and obstacles.
 
 Member Goals:  
-  Kennedy:  
-  Caroline:  
-  Samantha: 
+  Kennedy:    
+  Caroline: Find elements/art for gameplay (characters, scene, obstacles), look into camera following and staying on player  
+  Samantha:  
+  Isabel: Look into randomization code (for sand dollars and spawning creatures)
