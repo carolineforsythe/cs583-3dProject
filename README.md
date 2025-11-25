@@ -9,4 +9,4 @@
   Kennedy:    
   Caroline: completed main menu and options menu; found elements/art for gameplay (characters, scene, obstacles); will complete camera movement and staying on player   
   Samantha:  
-  Isabel: Look into randomization code (for sand dollars and spawning creatures)
+  Isabel: Look into randomization code (for banannas dollars and spawning obstacles)
