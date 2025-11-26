@@ -13,4 +13,4 @@
 
   **Halfway Project Review Video:**  https://youtu.be/trpvGEpdQy8
 
-  **Note** - updated the level one assets / level with trees and monkey but my laptop isn't working well and I can't record a new video so I uploaded a screenshot to show this(mbscenery) - Samantha  
+  
