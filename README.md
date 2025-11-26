@@ -11,6 +11,6 @@
   Samantha: started adding trees, foliage, etc. to make level look more jungly, and added materials for ground and monkey
   Isabel: look into randomization code (for spawning bananas and obstacles)
 
-  **Halfway Project Review Video:** https://youtu.be/Fa-cLwGlSSY https://youtu.be/trpvGEpdQy8
+  **Halfway Project Review Video:**  https://youtu.be/trpvGEpdQy8
 
   **Note** - updated the level one assets / level with trees and monkey but my laptop isn't working well and I can't record a new video so I uploaded a screenshot to show this(mbscenery) - Samantha  
