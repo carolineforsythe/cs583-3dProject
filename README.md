@@ -8,7 +8,7 @@
 **Member Goals:**  
   Kennedy: implemented 3D game movement for a capsule object (the camera follows the object and it moves using wsad and arrows) -  will update to include the monkey asset to the movement    
   Caroline: set up github repo and create project file; completed main menu and options menu; found elements/art for gameplay (characters, scene, obstacles) and loaded them into the game assets    
-  Samantha:  
+  Samantha: started adding trees, foliage, etc. to make level look more jungly, and added materials for ground and monkey
   Isabel: look into randomization code (for spawning bananas and obstacles)
 
   **Halfway Project Review Video:** https://youtu.be/Fa-cLwGlSSY 
