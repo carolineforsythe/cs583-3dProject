@@ -131,6 +131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2098282511}
     m_Modifications:
+    - target: {fileID: -6057140222963153312, guid: cd98b2c550b37b84ea57e813e739d94a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 28de7a418b626df489fcd015262acb99, type: 2}
     - target: {fileID: -4216859302048453862, guid: cd98b2c550b37b84ea57e813e739d94a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -462,6 +466,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c9a1eb172884d389ebfed833265b4fa, type: 3}
+--- !u!95 &401703954 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: cd98b2c550b37b84ea57e813e739d94a, type: 3}
+  m_PrefabInstance: {fileID: 113143693}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &542836899
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1480,11 +1489,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edb1d294b3aa04243b4077ad987f88bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 7
   jumpHeight: 2
   gravity: -20
   cameraTransform: {fileID: 1506734489}
-  animator: {fileID: 0}
+  animator: {fileID: 401703954}
   maxHealth: 3
 --- !u!143 &2098282510
 CharacterController:

@@ -4,11 +4,11 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 6f;
+    public float moveSpeed = 7f;
     public float jumpHeight = 2f;
     public float gravity = -20f;
-    public Transform cameraTransform; 
-    public Animator animator; // drag monkey Animator here 
+    public Transform cameraTransform;
+    public Animator animator;      
     public int maxHealth = 3;
 
     private CharacterController controller;
@@ -24,20 +24,20 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Ground check
+        // check ground
         isGrounded = controller.isGrounded;
         if (isGrounded && velocity.y < 0)
             velocity.y = -2f;
 
-        // Input
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        // check input
+        float horizontal = Input.GetAxis("Horizontal");   
+        float vertical   = Input.GetAxis("Vertical");     
 
-        // Movement relative to camera
+        // move camera
         Vector3 forward = cameraTransform.forward;
-        Vector3 right = cameraTransform.right;
+        Vector3 right   = cameraTransform.right;
         forward.y = 0f;
-        right.y = 0f;
+        right.y   = 0f;
         forward.Normalize();
         right.Normalize();
 
@@ -52,23 +52,43 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * 10f);
         }
 
-        // Jump
+        // jump
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+
+
+            if (animator != null)
+            {
+                animator.SetBool("jump1", true);
+            }
         }
 
-        // Gravity
+        // gravity 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        // Animation parameters (optional for later)
+        // animations
         if (animator != null)
         {
-            float speedPercent = move.magnitude;
-            animator.SetFloat("Speed", speedPercent);
-            animator.SetBool("IsGrounded", isGrounded);
-            animator.SetFloat("VerticalVelocity", velocity.y);
+
+            bool movingForward  = vertical >  0.1f;
+            bool movingBackward = vertical < -0.1f;
+
+            // forward movement
+            animator.SetBool("run", movingForward);
+
+            // backwards
+            animator.SetBool("Back run", movingBackward);
+           
+
+            // jumping
+            if (isGrounded && velocity.y <= 0f)
+            {
+                animator.SetBool("jump1", false);
+            }
+
+            
         }
     }
 
@@ -77,9 +97,14 @@ public class PlayerController : MonoBehaviour
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
-            // Restart current level
+            // die
+            if (animator != null)
+                animator.SetBool("die", true);
+
+            // restart scene
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
+
 
