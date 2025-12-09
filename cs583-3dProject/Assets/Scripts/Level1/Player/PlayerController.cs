@@ -90,7 +90,14 @@ public class PlayerController : MonoBehaviour
 
             
         }
+
+        if (transform.position.y < -5f)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
+
+
 
     public void TakeDamage(int amount)
     {
