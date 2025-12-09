@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    private void OnMove(InputValue inputValue)
-    {
-        Debug.Log(inputValue.Get<Vector2>());
-    }
+   void Start()
+{
+}
+
+void Update()
+{
+}
 
 }
+
+
