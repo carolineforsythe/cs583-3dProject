@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         currentHealth = maxHealth;
+        numLivesLeft = 3;
 
         // setup jump audio source if not assigned
         if (jumpAudioSource == null)
