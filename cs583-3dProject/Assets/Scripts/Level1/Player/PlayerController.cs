@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     public int maxHealth = 3;
     public static int numLivesLeft = 3;
+    
+
 
     // jump sound
     public AudioSource jumpAudioSource;
