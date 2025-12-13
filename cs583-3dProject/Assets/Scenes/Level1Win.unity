@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 255405261}
   - component: {fileID: 255405262}
   m_Layer: 0
-  m_Name: Level1LoseGameManager
+  m_Name: Level1WinGameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

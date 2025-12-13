@@ -1,0 +1,44 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class RemoveBanana2 : MonoBehaviour
+{
+    public static int numBananasToCollect = 3;
+    public float deleteDistance = 2f;   // how close the player needs to be
+    private Transform player;
+
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Monkey").transform;
+        numBananasToCollect = 3;
+    }
+
+    void Update()
+    {
+        // find all bananas currently in the scene
+        GameObject[] bananas = GameObject.FindGameObjectsWithTag("Banana");
+
+        foreach (GameObject banana in bananas)
+        {
+            float dist = Vector3.Distance(player.position, banana.transform.position);
+
+            if (dist <= deleteDistance)
+            {
+                Destroy(banana);
+                numBananasToCollect--;
+
+                print(numBananasToCollect);
+
+                if (numBananasToCollect == 0)
+                {
+                    SceneManager.LoadScene("Level2Win");
+
+
+                }
+            }
+        }
+    }
+}

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Level1Win : MonoBehaviour
+public class Level2Lose : MonoBehaviour
 {
-    public void replayLevel1()
+    public void replayLevel2()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Level2");
     }
 
     public void goToMainMenu()
