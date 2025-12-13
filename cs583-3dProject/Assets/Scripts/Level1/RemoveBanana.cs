@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class RemoveBanana : MonoBehaviour
 {
-    public static int numBananasCollected = 0;
+    public static int numBananasToCollect = 3;
     public float deleteDistance = 2f;   // how close the player needs to be
     private Transform player;
     
@@ -13,7 +13,7 @@ public class RemoveBanana : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Monkey").transform;
-        numBananasCollected = 0;
+        numBananasToCollect = 3;
     }
 
     void Update()
@@ -28,11 +28,11 @@ public class RemoveBanana : MonoBehaviour
             if (dist <= deleteDistance)
             {
                 Destroy(banana);
-                numBananasCollected++;
+                numBananasToCollect--;
 
-                print(numBananasCollected);
+                print(numBananasToCollect);
 
-                if(numBananasCollected == 3)
+                if(numBananasToCollect == 0)
                 {
                     SceneManager.LoadScene("Level1Win");
 
