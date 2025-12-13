@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public Transform RespawnPoint;
     private bool canTakeDamage = true;
-    private bool hasFallen = false; // prevent multiple life decrements
+    private bool hasFallen = false; 
     public float moveSpeed = 7f;
     public float jumpHeight = 2f;
     public float gravity = -20f;
@@ -14,8 +14,8 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     public int maxHealth = 3;
     public static int numLivesLeft = 3;
-    
 
+    public float fatalFallDistance = 2f; 
 
     // jump sound
     public AudioSource jumpAudioSource;
@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity;
     private bool isGrounded;
     private int currentHealth;
+    private float fallStartY;
+
+    private bool wasGroundedLastFrame;
 
     void Start()
     {
@@ -32,12 +35,15 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;
         numLivesLeft = 3;
 
+        wasGroundedLastFrame = controller.isGrounded;
+        fallStartY = transform.position.y;
+
         // setup jump audio source if not assigned
         if (jumpAudioSource == null)
         {
             jumpAudioSource = gameObject.AddComponent<AudioSource>();
             jumpAudioSource.playOnAwake = false;
-            jumpAudioSource.spatialBlend = 0f; // 2D sound
+            jumpAudioSource.spatialBlend = 0f; 
         }
     }
 
@@ -52,6 +58,45 @@ public class PlayerController : MonoBehaviour
     {
         // check ground
         isGrounded = controller.isGrounded;
+
+
+        if (wasGroundedLastFrame && !isGrounded)
+        {
+            fallStartY = transform.position.y; 
+        }
+
+        if (!wasGroundedLastFrame && isGrounded && !hasFallen)
+        {
+            float fallDistance = fallStartY - transform.position.y;
+            if (fallDistance >= fatalFallDistance)
+            {
+                hasFallen = true;
+                numLivesLeft--;
+
+                if (numLivesLeft <= 0)
+                {
+                    SceneManager.LoadScene("Level1Lose");
+                    return;
+                }
+                else
+                {
+                    // respawn
+                    print("Attempting respawn to: " + RespawnPoint.position);
+                    velocity = Vector3.zero;
+                    controller.enabled = false;
+                    transform.position = RespawnPoint.position;
+                    transform.rotation = RespawnPoint.rotation;
+                    controller.enabled = true;
+                    print("After respawn, position is: " + transform.position);
+
+                    StartCoroutine(ResetFallFlagAfterDelay());
+                    return;
+                }
+            }
+        }
+
+        wasGroundedLastFrame = isGrounded;
+
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
@@ -91,7 +136,7 @@ public class PlayerController : MonoBehaviour
             PlayJumpSound();
         }
 
-        // gravity 
+        // gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
@@ -108,7 +153,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // fall detection and respawn
+        // fall detection and respawn 
         if (transform.position.y < -5f && !hasFallen)
         {
             hasFallen = true;
