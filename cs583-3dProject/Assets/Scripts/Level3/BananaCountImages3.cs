@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BananaCountImages3 : MonoBehaviour
 {
-    public Image[] bananaImages; // array of 3 hearts
+    public Image[] bananaImages; // array of 4 bananas
     public Sprite bananaSprite;
 
     void Start()
