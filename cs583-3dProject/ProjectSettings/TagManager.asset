@@ -7,6 +7,7 @@ TagManager:
   - Water
   - Monkey
   - Banana
+  - Bird
   layers:
   - Default
   - TransparentFX
