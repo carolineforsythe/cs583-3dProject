@@ -2,30 +2,18 @@ using UnityEngine;
 
 public class RotatingPlatform : MonoBehaviour
 {
-    public float rotationSpeed = 45f; // Degrees per second
+    public float rotationSpeed = 45f; // degrees per second
 
-    private void Update()
-    {
-        // Rotate the platform around its Y-axis
-        transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
-    }
+    // Exposed so PlayerController can read it
+    [HideInInspector]
+    public float deltaRotation;
 
-    private void OnTriggerEnter(Collider other)
+    void Update()
     {
-        // When player lands on the platform, make them a child of it
-        if (other.CompareTag("Monkey"))
-        {
-            other.transform.SetParent(transform);
-        }
-    }
+        // Calculate rotation for this frame
+        deltaRotation = rotationSpeed * Time.deltaTime;
 
-    private void OnTriggerExit(Collider other)
-    {
-        // When player leaves the platform, unparent them
-        if (other.CompareTag("Monkey"))
-        {
-            other.transform.SetParent(null);
-        }
+        // Rotate platform
+        transform.Rotate(Vector3.up, deltaRotation, Space.World);
     }
 }
-
