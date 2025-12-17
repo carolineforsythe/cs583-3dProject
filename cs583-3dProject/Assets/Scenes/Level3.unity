@@ -828,14 +828,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RespawnPoint: {fileID: 1216543682}
-  canTakeDamage: 1
-  hasFallen: 0
   moveSpeed: 7
   jumpHeight: 2
   gravity: -20
   cameraTransform: {fileID: 614134187}
   animator: {fileID: 904153184}
   maxHealth: 3
+  canTakeDamage: 1
+  hasFallen: 0
   fatalFallDistance: 12
   jumpAudioSource: {fileID: 30437801}
   jumpSound: {fileID: 8300000, guid: 32ef9e67adfa44b65b5d6a8ff832772c, type: 3}
@@ -2898,6 +2898,26 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0062ca68a1ca4469acc93231d3c8a6f5, type: 3}
+--- !u!1 &163315027 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3534262743695858893, guid: 6d73487b05c34af59930ab387905e427, type: 3}
+  m_PrefabInstance: {fileID: 186335002}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &163315031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163315027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b444741ccf0b14da783493cdfb721ff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDirection: {x: 1, y: 0, z: 0}
+  distance: 3
+  speed: 2
 --- !u!4 &163860957 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2998343082182733449, guid: 518e511fe8cd499fa68b1702e342d91b, type: 3}
@@ -3138,9 +3158,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1266693352}
     m_Modifications:
+    - target: {fileID: 3534262743695858893, guid: 6d73487b05c34af59930ab387905e427, type: 3}
+      propertyPath: m_TagString
+      value: MovingPlatform
+      objectReference: {fileID: 0}
     - target: {fileID: 6289237587793071179, guid: 6d73487b05c34af59930ab387905e427, type: 3}
       propertyPath: m_Name
       value: Block_2 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6289237587793071179, guid: 6d73487b05c34af59930ab387905e427, type: 3}
+      propertyPath: m_TagString
+      value: MovingPlatform
       objectReference: {fileID: 0}
     - target: {fileID: 6632690572698097393, guid: 6d73487b05c34af59930ab387905e427, type: 3}
       propertyPath: m_LocalScale.x
@@ -3218,8 +3246,19 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6632690572698097393, guid: 6d73487b05c34af59930ab387905e427, type: 3}
       insertIndex: 7
       addedObject: {fileID: 1623983875}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6289237587793071179, guid: 6d73487b05c34af59930ab387905e427, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 944375709}
+    - targetCorrespondingSourceObject: {fileID: 3534262743695858893, guid: 6d73487b05c34af59930ab387905e427, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 163315031}
   m_SourcePrefab: {fileID: 100100000, guid: 6d73487b05c34af59930ab387905e427, type: 3}
+--- !u!1 &186335003 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6289237587793071179, guid: 6d73487b05c34af59930ab387905e427, type: 3}
+  m_PrefabInstance: {fileID: 186335002}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &188590625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6061,9 +6100,10 @@ GameObject:
   - component: {fileID: 393606231}
   - component: {fileID: 393606230}
   - component: {fileID: 393606232}
+  - component: {fileID: 393606233}
   m_Layer: 0
   m_Name: Block_3_LOD0 (2)
-  m_TagString: Untagged
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6154,6 +6194,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.817868, y: 0.8175019, z: 0.8188536}
   m_Center: {x: 0.00021617115, y: 0.40904367, z: 0.00029797852}
+--- !u!114 &393606233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393606228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b444741ccf0b14da783493cdfb721ff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDirection: {x: 1, y: 0, z: 0}
+  distance: 3
+  speed: 4
 --- !u!1001 &395786351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11673,9 +11728,10 @@ GameObject:
   - component: {fileID: 799789427}
   - component: {fileID: 799789426}
   - component: {fileID: 799789425}
+  - component: {fileID: 799789428}
   m_Layer: 0
   m_Name: Block_3_LOD0 (4)
-  m_TagString: Untagged
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11766,6 +11822,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799789423}
   m_Mesh: {fileID: -5491763218144382832, guid: 44c75f3e3b88441e84e3f897a8897e50, type: 3}
+--- !u!114 &799789428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799789423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b444741ccf0b14da783493cdfb721ff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDirection: {x: 1, y: 0, z: 0}
+  distance: 4
+  speed: 2
 --- !u!4 &801187304 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6538029662534792493, guid: b654265e25e14e50b76eff72c171c35f, type: 3}
@@ -14425,6 +14496,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6632690572698097393, guid: 6d73487b05c34af59930ab387905e427, type: 3}
   m_PrefabInstance: {fileID: 186335002}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &944375709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186335003}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b444741ccf0b14da783493cdfb721ff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDirection: {x: 1, y: 0, z: 0}
+  distance: 3
+  speed: 2
 --- !u!4 &949539289 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5263712350346979489, guid: 276b6a3a81c64ab09b15cceec98c4373, type: 3}
@@ -17945,9 +18031,10 @@ GameObject:
   - component: {fileID: 1210571648}
   - component: {fileID: 1210571647}
   - component: {fileID: 1210571646}
+  - component: {fileID: 1210571649}
   m_Layer: 0
   m_Name: Block_3_LOD0 (5)
-  m_TagString: Untagged
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18038,6 +18125,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210571644}
   m_Mesh: {fileID: -5491763218144382832, guid: 44c75f3e3b88441e84e3f897a8897e50, type: 3}
+--- !u!114 &1210571649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210571644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b444741ccf0b14da783493cdfb721ff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDirection: {x: 1, y: 0, z: 0}
+  distance: 3
+  speed: 2
 --- !u!1 &1216543681
 GameObject:
   m_ObjectHideFlags: 0
@@ -24535,9 +24637,10 @@ GameObject:
   - component: {fileID: 1623983878}
   - component: {fileID: 1623983877}
   - component: {fileID: 1623983876}
+  - component: {fileID: 1623983879}
   m_Layer: 0
   m_Name: Block_3_LOD0 (7)
-  m_TagString: Untagged
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24628,6 +24731,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623983874}
   m_Mesh: {fileID: -5491763218144382832, guid: 44c75f3e3b88441e84e3f897a8897e50, type: 3}
+--- !u!114 &1623983879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623983874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b444741ccf0b14da783493cdfb721ff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDirection: {x: 1, y: 0, z: 0}
+  distance: 2
+  speed: 3
 --- !u!4 &1624130620 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2998343082182733449, guid: 518e511fe8cd499fa68b1702e342d91b, type: 3}
@@ -25060,9 +25178,10 @@ GameObject:
   - component: {fileID: 1646635552}
   - component: {fileID: 1646635551}
   - component: {fileID: 1646635553}
+  - component: {fileID: 1646635554}
   m_Layer: 0
   m_Name: Block_3_LOD0 (3)
-  m_TagString: Untagged
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25153,6 +25272,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.817868, y: 0.8175019, z: 0.8188536}
   m_Center: {x: 0.00021617115, y: 0.40904367, z: 0.00029750168}
+--- !u!114 &1646635554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646635549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b444741ccf0b14da783493cdfb721ff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDirection: {x: 1, y: 0, z: 0}
+  distance: 5
+  speed: 4
 --- !u!1001 &1648920749
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25895,9 +26029,10 @@ GameObject:
   - component: {fileID: 1693984973}
   - component: {fileID: 1693984972}
   - component: {fileID: 1693984971}
+  - component: {fileID: 1693984974}
   m_Layer: 0
   m_Name: Block_3_LOD0 (6)
-  m_TagString: Untagged
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25988,6 +26123,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1693984969}
   m_Mesh: {fileID: -5491763218144382832, guid: 44c75f3e3b88441e84e3f897a8897e50, type: 3}
+--- !u!114 &1693984974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693984969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b444741ccf0b14da783493cdfb721ff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDirection: {x: 1, y: 0, z: 0}
+  distance: 4
+  speed: 2
 --- !u!1001 &1695608061
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26257,9 +26407,10 @@ GameObject:
   - component: {fileID: 1709200607}
   - component: {fileID: 1709200606}
   - component: {fileID: 1709200608}
+  - component: {fileID: 1709200609}
   m_Layer: 0
   m_Name: Block_3_LOD0 (1)
-  m_TagString: Untagged
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26350,6 +26501,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.817868, y: 0.8175019, z: 0.8188536}
   m_Center: {x: 0.00021617115, y: 0.40904367, z: 0.00029797852}
+--- !u!114 &1709200609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709200604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b444741ccf0b14da783493cdfb721ff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDirection: {x: 1, y: 0, z: 0}
+  distance: 4
+  speed: 2
 --- !u!4 &1714895564 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2690272868475620332, guid: 0062ca68a1ca4469acc93231d3c8a6f5, type: 3}
