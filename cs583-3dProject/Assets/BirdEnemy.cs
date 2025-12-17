@@ -10,16 +10,38 @@ public class BirdEnemy : MonoBehaviour
 
     private Vector3 moveDir;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public float pitchMin = 0.95f;
+    public float pitchMax = 1.05f;
+
+    // Called by spawner
     public void Init(Vector3 direction)
     {
         moveDir = direction.normalized;
         Destroy(gameObject, lifeTime);
     }
 
+    void Start()
+    {
+        // Get AudioSource if not assigned
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
+
+        // Slight variation so multiple birds don't sound identical
+        if (audioSource != null)
+        {
+            audioSource.pitch = Random.Range(pitchMin, pitchMax);
+            audioSource.Play();
+        }
+    }
+
     void Update()
     {
+        // Move bird
         transform.position += moveDir * speed * Time.deltaTime;
 
+        // Face direction of travel
         if (moveDir.sqrMagnitude > 0.001f)
             transform.forward = moveDir;
     }
@@ -31,10 +53,8 @@ public class BirdEnemy : MonoBehaviour
         PlayerController3 player = other.GetComponent<PlayerController3>();
         if (player == null) return;
 
-        // prevent double-hits while respawning / falling
         if (!player.canTakeDamage || player.hasFallen) return;
 
-        // "kill" player: remove a life and respawn using YOUR exact pattern
         player.hasFallen = true;
         PlayerController3.numLivesLeft--;
 
@@ -44,26 +64,21 @@ public class BirdEnemy : MonoBehaviour
             return;
         }
 
-        // teleport respawn (same as your code)
+        // Respawn player (same logic you already use)
         CharacterController cc = other.GetComponent<CharacterController>();
         if (cc != null) cc.enabled = false;
-
-        // reset velocity in your controller
-        // (velocity is private, so we can't directly set it here)
-        // workaround: just respawn cleanly; your gravity will settle next frames
 
         other.transform.position = player.RespawnPoint.position;
         other.transform.rotation = player.RespawnPoint.rotation;
 
         if (cc != null) cc.enabled = true;
 
-        // reset hasFallen after delay (same as your coroutine behavior)
         player.StartCoroutine(ResetPlayerFallFlag(player));
 
         Destroy(gameObject);
     }
 
-    private IEnumerator ResetPlayerFallFlag(PlayerController3 player)
+    IEnumerator ResetPlayerFallFlag(PlayerController3 player)
     {
         yield return new WaitForSeconds(1f);
         player.hasFallen = false;
