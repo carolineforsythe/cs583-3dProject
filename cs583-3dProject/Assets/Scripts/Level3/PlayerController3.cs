@@ -78,7 +78,7 @@ public class PlayerController3 : MonoBehaviour
 
                 if (numLivesLeft <= 0)
                 {
-                    SceneManager.LoadScene("Level2Lose");
+                    SceneManager.LoadScene("Level3Lose");
                     return;
                 }
                 else
@@ -164,7 +164,7 @@ public class PlayerController3 : MonoBehaviour
             print("Lives remaining: " + numLivesLeft);
             if (numLivesLeft <= 0)
             {
-                SceneManager.LoadScene("Level2Lose");
+                SceneManager.LoadScene("Level3Lose");
             }
             else
             {
