@@ -14,6 +14,8 @@
     
   Isabel: Did layout for level 2, added all the trees and foliage, made the block rotate/move up and down, found snake element and added to level, Eddited monkey code to move with the moving blocks while goign through the level. Level 3- one of the challenges coded the blocks to move side to side.
 
-  **Halfway Project Review Video:**  https://youtu.be/QBen1U8_n-M 
+  **Halfway Project Review Video:**  https://youtu.be/QBen1U8_n-M  
+
+  **Final Project Video:**  https://youtu.be/X0vUts_XZdI
 
   
