@@ -28,7 +28,7 @@ public class BirdEnemy : MonoBehaviour
         if (audioSource == null)
             audioSource = GetComponent<AudioSource>();
 
-        // Slight variation so multiple birds don't sound identical
+        // variation so all birds do not sound the same
         if (audioSource != null)
         {
             audioSource.pitch = Random.Range(pitchMin, pitchMax);
@@ -38,10 +38,10 @@ public class BirdEnemy : MonoBehaviour
 
     void Update()
     {
-        // Move bird
+        // move bird
         transform.position += moveDir * speed * Time.deltaTime;
 
-        // Face direction of travel
+        // face direction of travel
         if (moveDir.sqrMagnitude > 0.001f)
             transform.forward = moveDir;
     }
@@ -55,16 +55,17 @@ public class BirdEnemy : MonoBehaviour
 
         if (!player.canTakeDamage || player.hasFallen) return;
 
+        // decrease one life using monkey fall logic
         player.hasFallen = true;
         PlayerController3.numLivesLeft--;
 
         if (PlayerController3.numLivesLeft <= 0)
         {
-            SceneManager.LoadScene("Level2Lose");
+            SceneManager.LoadScene("Level3Lose");
             return;
         }
 
-        // Respawn player (same logic you already use)
+        // respawn player (
         CharacterController cc = other.GetComponent<CharacterController>();
         if (cc != null) cc.enabled = false;
 

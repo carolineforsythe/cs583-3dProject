@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Level2Win : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void replayLevel2()
     {
-        
+        SceneManager.LoadScene("Level2");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void goToMainMenu()
     {
-        
+        SceneManager.LoadScene("MainMenu");
     }
 }

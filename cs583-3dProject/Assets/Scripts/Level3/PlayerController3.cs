@@ -22,8 +22,8 @@ public class PlayerController3 : MonoBehaviour
     [Header("Health & Lives")]
     public int maxHealth = 3;
     public static int numLivesLeft = 3;
-    public bool canTakeDamage = true; // accessible by enemies
-    public bool hasFallen = false;    // now public so SnakeEnemy can check
+    public bool canTakeDamage = true; 
+    public bool hasFallen = false;    
 
     [Header("Fall Damage")]
     public float fatalFallDistance = 2f;
@@ -39,7 +39,7 @@ public class PlayerController3 : MonoBehaviour
     private float fallStartY;
     private bool wasGroundedLastFrame;
 
-    // 🔹 PLATFORM SUPPORT
+    // platform support
     private Transform currentPlatform;
     private Vector3 lastPlatformPosition;
 
@@ -70,7 +70,7 @@ public class PlayerController3 : MonoBehaviour
     {
         isGrounded = controller.isGrounded;
 
-        // 🔹 MOVE WITH PLATFORM
+        // move with platform
         if (currentPlatform != null)
         {
             Vector3 platformDelta = currentPlatform.position - lastPlatformPosition;
@@ -78,13 +78,13 @@ public class PlayerController3 : MonoBehaviour
             lastPlatformPosition = currentPlatform.position;
         }
 
-        // FALL START
+        // fall start
         if (wasGroundedLastFrame && !isGrounded)
         {
             fallStartY = transform.position.y;
         }
 
-        // LANDING CHECK
+        // landing check
         if (!wasGroundedLastFrame && isGrounded && !hasFallen)
         {
             float fallDistance = fallStartY - transform.position.y;
@@ -100,11 +100,11 @@ public class PlayerController3 : MonoBehaviour
         if (isGrounded && velocity.y < 0)
             velocity.y = -2f;
 
-        // INPUT
+        // input
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        // CAMERA RELATIVE MOVE
+        // camera move
         Vector3 forward = cameraTransform.forward;
         Vector3 right = cameraTransform.right;
         forward.y = 0f;
@@ -118,12 +118,12 @@ public class PlayerController3 : MonoBehaviour
         {
             controller.Move(move * moveSpeed * Time.deltaTime);
 
-            // Rotate to face movement
+            // rotate to face movement
             Quaternion targetRot = Quaternion.LookRotation(move);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * 10f);
         }
 
-        // JUMP
+        // jump
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
@@ -134,11 +134,11 @@ public class PlayerController3 : MonoBehaviour
             PlayJumpSound();
         }
 
-        // GRAVITY
+        // gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        // ANIMATIONS
+        // animations
         if (animator != null)
         {
             animator.SetBool("run", vertical > 0.1f);
@@ -148,14 +148,14 @@ public class PlayerController3 : MonoBehaviour
                 animator.SetBool("jump1", false);
         }
 
-        // FALL OFF MAP
+        // fall of map - lose life
         if (transform.position.y < -5f && !hasFallen)
         {
             LoseLife();
         }
     }
 
-    // 🔍 PLATFORM DETECTION
+    // platform detection
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.collider.CompareTag("MovingPlatform"))
@@ -172,6 +172,7 @@ public class PlayerController3 : MonoBehaviour
         }
     }
 
+    // lose life logic
     void LoseLife()
     {
         hasFallen = true;
@@ -187,6 +188,7 @@ public class PlayerController3 : MonoBehaviour
         }
     }
 
+    // respawn logic
     IEnumerator Respawn()
     {
         velocity = Vector3.zero;
